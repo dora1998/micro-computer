@@ -1,0 +1,24 @@
+#include "p16F1829.inc"
+    __CONFIG _CONFIG1, _FOSC_INTOSC & _WDTE_OFF & _MCLRE_OFF
+    __CONFIG _CONFIG2, _PLLEN_ON & _LVP_OFF
+RES_VECT	CODE	0x0000
+
+    MOVLB 0x0
+    CLRF PORTC
+    
+    MOVLW 0xF0
+    MOVLB 0x1
+    MOVWF OSCCON
+    
+    CLRF TRISC
+    
+    MOVLB 0x3
+    CLRF ANSELC
+
+    MOVLW 0x4
+    MOVLB 0x0
+    MOVWF PORTC
+
+    GOTO 0x7FC
+       
+    END
